@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsnd --respawn src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "yarn build && node dist/server.js"
   },
   "keywords": [],
   "author": "Rodrick Alcantara",
