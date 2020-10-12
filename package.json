@@ -5,8 +5,8 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "tsnd --respawn src/server.ts",
-    "build": "tsc",
-    "start": "yarn build && node dist/server.js"
+    "build": "rm -rf api-build && tsc",
+    "start": "yarn build && node api-build/server.js"
   },
   "keywords": [],
   "author": "Rodrick Alcantara",

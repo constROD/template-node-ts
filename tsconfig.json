@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./api-build",
     "moduleResolution": "node",
     "removeComments": true,
     "noImplicitAny": true,
@@ -23,5 +23,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/shared/services/test.service.tss", "src/dao/.gitkeep", "src/shared/models/.gitkeep"]
 }

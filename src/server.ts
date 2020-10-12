@@ -1,7 +1,7 @@
 import fs from "fs";
 import https from "https";
 import app from "./App";
-import { useConfig } from "./configs/app";
+import { useConfig } from "./shared/configs/app";
 
 const { ZONE, PORT } = useConfig;
 

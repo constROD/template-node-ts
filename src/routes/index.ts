@@ -1,4 +1,4 @@
-import { createRoute } from "../utils/routes";
+import { createRoute } from "../shared/utils/routes";
 import TestRouter from "./Test";
 
 const useRoutes = () => ({
