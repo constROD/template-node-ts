@@ -1,10 +1,10 @@
 import express, { Application } from "express";
-import useRoutes from "./routes";
+import { ROUTES } from "./routes";
 
 const app: Application = express();
 
 // Routes
-const { test } = useRoutes();
+const { test } = ROUTES;
 
 // Middlewares
 app.use(express.json());

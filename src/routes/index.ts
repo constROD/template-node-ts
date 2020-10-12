@@ -1,8 +1,6 @@
 import { createRoute } from "../shared/utils/routes";
 import TestRouter from "./Test";
 
-const useRoutes = () => ({
+export const ROUTES = {
   test: createRoute("/test", TestRouter),
-});
-
-export default useRoutes;
+}
