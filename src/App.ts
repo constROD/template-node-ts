@@ -10,6 +10,6 @@ const { test } = ROUTES;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Routes
-app.use(test.path, test.routes);
+app.use(test.url, test.controller);
 
 export default app;

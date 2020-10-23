@@ -1,11 +1,9 @@
 import fs from "fs";
 import https from "https";
 import app from "./App";
-import { CONFIG } from "./shared/configs/app";
+import { APP_PORT, APP_ZONE } from "./shared/configs/app";
 
-const { ZONE, PORT } = CONFIG;
-
-if (ZONE === "production") {
+if (APP_ZONE === "production") {
   const sslCertificates = {
     key: fs.readFileSync("/path/to/key"),
     cert: fs.readFileSync("/path/to/cert"),
@@ -14,7 +12,7 @@ if (ZONE === "production") {
 
   https
     .createServer(sslCertificates, app)
-    .listen(PORT, () => console.log("Listening on port: " + PORT));
+    .listen(APP_PORT, () => console.log("Listening on port: " + APP_PORT));
 } else {
-  app.listen(PORT, () => console.log("Listening on port: " + PORT));
+  app.listen(APP_PORT, () => console.log("Listening on port: " + APP_PORT));
 }

@@ -3,4 +3,4 @@ import TestRouter from "./Test";
 
 export const ROUTES = {
   test: createRoute("/test", TestRouter),
-}
+};
