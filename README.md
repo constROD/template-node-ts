@@ -26,7 +26,7 @@ $ npm run dev or yarn dev
     > **Note:** Before running in production mode. Make sure to provide the ssl file paths in the `src/server.ts`.
 
 ```terminal
-& npm start or yarn start
+$ npm start or yarn start
 ```
 
 4.  That's it! Congrats.
