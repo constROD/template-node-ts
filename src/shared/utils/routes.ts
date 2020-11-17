@@ -1,5 +1,5 @@
 import { Router } from "express";
 
-export const createRoute = (url: string, controller: Router) => {
-  return { url, controller };
+export const useCreateRoute = (path: string, routers: Router) => {
+  return { path, routers };
 };

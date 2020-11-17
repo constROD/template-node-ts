@@ -23,5 +23,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/shared/services/test.service.tss", "src/dao/.gitkeep", "src/shared/models/.gitkeep"]
+  "include": ["./src/**/*.ts"]
 }
