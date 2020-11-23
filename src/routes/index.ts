@@ -1,6 +1,6 @@
 import { useCreateRoute } from "../shared/utils/routes";
-import TestRouter from "./Test";
+import UserRouter from "./User";
 
 export const rootRoutes = {
-  test: useCreateRoute("/test", TestRouter),
+  users: useCreateRoute("/v1/users", UserRouter),
 };

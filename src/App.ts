@@ -4,12 +4,12 @@ import { rootRoutes } from "./routes";
 const app: Application = express();
 
 // Routes
-const { test } = rootRoutes;
+const { users } = rootRoutes;
 
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Routes
-app.use(test.path, test.routers);
+app.use(users.path, users.router);
 
 export default app;
