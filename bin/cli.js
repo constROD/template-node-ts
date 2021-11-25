@@ -2,14 +2,14 @@
 
 const { execSync } = require('child_process');
 
-const runCommand = (command = () => {
+const runCommand = (command) => {
   try {
-    execSync(`${comman}`, { stdio: 'inherit' });
+    execSync(`${command}`, { stdio: 'inherit' });
   } catch (error) {
     console.error(`Failed to execute ${command}`, error);
     return false;
   }
-});
+};
 
 const repoName = process.argv[2];
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/constrod/template-node-typescript ${repoName}`;
