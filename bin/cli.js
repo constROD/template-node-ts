@@ -9,6 +9,7 @@ const runCommand = (command) => {
     console.error(`Failed to execute ${command}`, error);
     return false;
   }
+  return true;
 };
 
 const repoName = process.argv[2];
@@ -23,4 +24,5 @@ console.log(`Installing dependencies for ${repoName}`);
 const isInstalled = runCommand(installDependenciesCommand);
 if (!isInstalled) process.exit(-1);
 
-console.log('Congratulations!');
+console.log('Congratulations! You are ready. Follow the following commands to start');
+console.log(`cd ${repoName} && yarn dev`);
