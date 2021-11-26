@@ -1,15 +1,12 @@
 {
-  "name": "@constrod/create-node",
-  "version": "1.0.6",
+  "name": "template-node-typescript",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": "./bin/cli.js",
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "repository": "https://github.com/constrod/template-node-typescript",
   "homepage": "https://github.com/constrod/template-node-typescript#readme.md",
   "bugs": {
