@@ -50,7 +50,7 @@
     "express": "^4.17.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,ts}": [
       "eslint --cache --fix"
     ]
   }
