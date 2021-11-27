@@ -7,7 +7,6 @@
     "build"
   ],
   "repository": "https://github.com/constrod/template-node-typescript",
-  "homepage": "https://github.com/constrod/template-node-typescript#readme.md",
   "bugs": {
     "url": "https://github.com/constrod/template-node-typescript/issues"
   },
