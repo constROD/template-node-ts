@@ -1,10 +1,10 @@
 {
   "name": "template-node-typescript",
   "version": "1.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "files": [
-    "dist"
+    "build"
   ],
   "repository": "https://github.com/constrod/template-node-typescript",
   "homepage": "https://github.com/constrod/template-node-typescript#readme.md",

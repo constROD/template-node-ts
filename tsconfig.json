@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "build",
     "moduleResolution": "node",
     "removeComments": true,
     "noImplicitAny": true,
@@ -25,6 +25,6 @@
       "src/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "commitlint.config.js"],
+  "exclude": ["node_modules", "build", "commitlint.config.js"],
   "include": ["./src/**/*.ts"]
 }
