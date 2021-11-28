@@ -21,7 +21,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --respawn --files src/index.ts",
-    "build": "tsc",
+    "build": "rm -rf build && tsc",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
     "pre-commit": "lint-staged --allow-empty",
