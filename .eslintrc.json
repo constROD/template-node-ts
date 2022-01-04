@@ -1,27 +1,92 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true,
+    "jest/globals": true
   },
-  "extends": ["airbnb-base", "airbnb-typescript/base"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "prettier"
+  ],
   "overrides": [
     {
-      "files": ["*.js", "*.ts"],
-      "parserOptions": {
-        "project": ["./tsconfig.json"]
+      "files": ["*.test.ts"],
+      "plugins": ["jest"],
+      "rules": {
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-argument": "off"
       }
     }
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": ["./tsconfig.eslint.json"]
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "jest"],
   "rules": {
+    "no-prototype-builtins": "off",
+    "class-methods-use-this": "off",
     "linebreak-style": "off",
     "no-undef": "error",
     "prefer-default-export": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "import/no-cycle": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "index",
+          "internal",
+          "sibling",
+          "parent",
+          "external",
+          "builtin",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "fixToUnknown": true
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": false
+      }
+    ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
+    "@typescript-eslint/unbound-method": [
+      "error",
+      {
+        "ignoreStatic": true
+      }
+    ]
   }
 }
