@@ -36,6 +36,7 @@ export enum HttpResponseType {
   BadRequest = 'badRequest',
   Unauthorized = 'unauthorized',
   Conflict = 'conflict',
+  NotFound = 'notFound',
 }
 
 export const HTTP_RESPONSES = {
@@ -88,5 +89,10 @@ export const HTTP_RESPONSES = {
     message: 'Conflict',
     statusCode: 409,
     code: 9,
+  },
+  notFound: {
+    message: 'Not Found',
+    statusCode: 404,
+    code: 10,
   },
 };
