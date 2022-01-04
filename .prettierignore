@@ -1,11 +1,7 @@
 node_modules/
 build/
-commitlint.config.js
-bin
 coverage/
-jest.*.ts
 .env
 .eslintcache
 .vscode
 *-error.log
-global.d.ts

@@ -1,7 +1,9 @@
-import app from './App';
+import createServer from './App';
 import { APP_PORT, APP_ZONE } from './shared/configs';
 
-app.listen(APP_PORT, async () => {
+const app = createServer();
+
+app.listen(APP_PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`
   *** APP IS RUNNING ON:

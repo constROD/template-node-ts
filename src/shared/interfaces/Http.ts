@@ -1,24 +1,24 @@
 export interface IHttpResponse {
-  message: string
-  error?: any
-  statusCode: number
-  code: number
-  results?: any
+  message: string;
+  error?: unknown;
+  statusCode: number;
+  code: number;
+  results?: unknown;
 }
 
 export interface IHttpRequest {
-  url: string
-  headers?: { [key: string]: any }
+  url: string;
+  headers?: { [key: string]: unknown };
 }
 
 export interface IHttpGETRequest extends IHttpRequest {
-  params?: { [key: string]: any }
+  params?: { [key: string]: unknown };
 }
 
 export interface IHttpPOSTRequest extends IHttpRequest {
-  body?: { [key: string]: any }
+  body?: { [key: string]: unknown };
 }
 
-export interface IHttpPUTRequest extends IHttpPOSTRequest { }
+export type IHttpPUTRequest = IHttpPOSTRequest;
 
-export interface IHttpDELETERequest extends IHttpGETRequest { }
+export type IHttpDELETERequest = IHttpGETRequest;

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2020",
     "module": "commonjs",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "lib": ["dom", "es6", "es2020", "esnext.asynciterable"],
     "sourceMap": true,
     "outDir": "build",
     "moduleResolution": "node",
@@ -25,6 +25,17 @@
       "src/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules", "build", "commitlint.config.js"],
-  "include": ["./src/**/*.ts"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "commitlint.config.js",
+    "src/fixtures/**/*",
+    "jest.config.ts",
+    "babel.config.js",
+    "coverage",
+    "src/**/*.test.ts",
+    "__snapshots__",
+    "jest.setup.ts"
+  ],
+  "include": ["src/**/*.ts"]
 }

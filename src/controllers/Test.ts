@@ -1,11 +1,12 @@
-import { Request, Response } from 'express';
 import { HttpResponseType, HTTP_RESPONSES } from '../shared/constants/Http';
 import TestService from '../shared/services/Test';
 
+import { Request, Response } from 'express';
+
 class TestController {
-  static async create(_: Request, res: Response) {
+  static create(_: Request, res: Response) {
     try {
-      const results = await TestService.create();
+      const results = TestService.create();
       res.status(results.statusCode).json(results);
     } catch (error) {
       const results = HTTP_RESPONSES[HttpResponseType.ServerError];
@@ -13,9 +14,9 @@ class TestController {
     }
   }
 
-  static async retrieve(_: Request, res: Response) {
+  static retrieve(_: Request, res: Response) {
     try {
-      const results = await TestService.retrieve();
+      const results = TestService.retrieve();
       res.status(results.statusCode).json(results);
     } catch (error) {
       const results = HTTP_RESPONSES[HttpResponseType.ServerError];
