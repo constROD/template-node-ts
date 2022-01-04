@@ -70,12 +70,6 @@
         "fixToUnknown": true
       }
     ],
-    "@typescript-eslint/no-empty-interface": [
-      "error",
-      {
-        "allowSingleExtends": false
-      }
-    ],
     "@typescript-eslint/no-misused-promises": [
       "error",
       {
