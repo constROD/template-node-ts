@@ -37,5 +37,5 @@
     "__snapshots__",
     "jest.setup.ts"
   ],
-  "include": ["src"]
+  "include": ["src/**/*.ts"]
 }
