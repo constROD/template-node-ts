@@ -1,5 +1,5 @@
 import createServer from './App';
-import { APP_PORT, APP_ZONE } from './shared/configs';
+import { APP_PORT, APP_ZONE } from './shared/configs/App';
 
 const app = createServer();
 

@@ -20,22 +20,18 @@
     "declaration": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "paths": {
-      "*": ["*"],
-      "src/*": ["./src/*"]
-    }
   },
   "exclude": [
-    "node_modules",
-    "build",
-    "commitlint.config.js",
-    "src/fixtures/**/*",
-    "jest.config.ts",
-    "babel.config.js",
-    "coverage",
-    "src/**/*.test.ts",
-    "__snapshots__",
-    "jest.setup.ts"
+    "./node_modules",
+    "./build",
+    "./commitlint.config.js",
+    "./src/fixtures/**/*",
+    "./jest.config.ts",
+    "./babel.config.js",
+    "./coverage",
+    "./src/**/*.test.ts",
+    "./__snapshots__",
+    "./jest.setup.ts"
   ],
   "include": ["src/**/*.ts"]
 }

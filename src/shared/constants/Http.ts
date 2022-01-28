@@ -10,6 +10,7 @@
   7 - Bad Request
   8 - Unauthorized
   9 - Conflict
+  10 - Not Found
 */
 
 export enum Code {
@@ -23,6 +24,7 @@ export enum Code {
   BadRequest = 7,
   Unauthorized = 8,
   Conflict = 9,
+  NotFound = 10,
 }
 
 export enum HttpResponseType {

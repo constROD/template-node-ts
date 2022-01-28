@@ -1,4 +1,4 @@
-import { HTTP_RESPONSES, HttpResponseType } from '../constants/Http';
+import { HttpResponseType, HTTP_RESPONSES } from '../constants/Http';
 
 import { Request, Response } from 'express';
 

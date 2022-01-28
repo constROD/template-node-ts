@@ -12,6 +12,7 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:jest/recommended",
     "plugin:jest/style",
+    "plugin:prettier/recommended",
     "prettier"
   ],
   "overrides": [
@@ -62,6 +63,7 @@
       }
     ],
     "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
     "@typescript-eslint/no-explicit-any": [
