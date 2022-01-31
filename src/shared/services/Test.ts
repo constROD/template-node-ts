@@ -1,4 +1,4 @@
-import { HttpResponseType, HTTP_RESPONSES } from '../constants/Http';
+import { HTTP_RESPONSES, HttpResponseType } from '../constants/Http';
 
 class TestService {
   static create() {

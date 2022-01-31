@@ -1,4 +1,4 @@
-import { HttpResponseType, HTTP_RESPONSES } from '../shared/constants/Http';
+import { HTTP_RESPONSES, HttpResponseType } from '../shared/constants/Http';
 import TestService from '../shared/services/Test';
 
 import { Request, Response } from 'express';
