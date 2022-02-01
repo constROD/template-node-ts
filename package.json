@@ -23,6 +23,7 @@
     "test": "jest",
     "dev": "tsnd --respawn --files src/index.ts",
     "build": "rm -rf build && tsc",
+    "format": "prettier --write src/**/*.ts",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
     "pre-commit": "lint-staged --allow-empty --concurrent false",
