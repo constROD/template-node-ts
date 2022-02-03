@@ -1,6 +1,35 @@
-node_modules
-build
-Dockerfile
-.dockerignore
-.prettierignore
-.prettierrc
+# Dependencies
+/node_modules
+
+# Configs
+/commitlint.config.js
+/jest.*.ts
+/Dockerfile
+
+# Caches
+/.eslintcache
+/.vscode
+
+# Testings
+/coverage
+
+# Builds
+/build
+
+# Miscellaneous
+/.DS_Store
+/.env
+/.env.development
+/.env.test
+/.env.production
+
+# Logs
+/*-error.log
+/*-debug.log
+
+# Types
+
+# Ignores
+/.dockerignore
+/.prettierignore
+/.eslintignore

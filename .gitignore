@@ -1,7 +1,31 @@
-node_modules/
-.env
-build/
-.eslintcache
-.vscode
-*-error.log
-coverage/
+# Dependencies
+/node_modules
+
+# Configs
+/commitlint.config.js
+/jest.*.ts
+
+# Caches
+/.eslintcache
+/.vscode
+
+# Testings
+/coverage
+
+# Builds
+/build
+
+# Miscellaneous
+/.DS_Store
+/.env
+/.env.development
+/.env.test
+/.env.production
+
+# Logs
+/*-error.log
+/*-debug.log
+
+# Types
+
+# Ignores
