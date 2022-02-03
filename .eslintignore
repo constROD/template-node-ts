@@ -4,6 +4,7 @@
 # Configs
 /commitlint.config.js
 /jest.*.ts
+/Dockerfile
 
 # Caches
 /.eslintcache

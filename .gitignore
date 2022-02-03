@@ -3,7 +3,6 @@
 
 # Configs
 /commitlint.config.js
-/jest.*.ts
 
 # Caches
 /.eslintcache
