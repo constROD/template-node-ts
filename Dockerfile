@@ -4,9 +4,9 @@ RUN mkdir -p /app/node_modules && chown -R node:node /app
 
 WORKDIR /app
 
-COPY tsconfig.json ./
-COPY package.json ./
-# COPY migration_orm.js ./
+COPY tsconfig.json tsconfig.json
+COPY package.json package.json
+# COPY migration_orm.js migration_orm.js
 COPY src src
 
 RUN yarn
