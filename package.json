@@ -20,6 +20,7 @@
     "test": "jest",
     "dev": "tsnd --respawn --files src/index.ts",
     "build": "rm -rf build && tsc",
+    "start": "yarn start",
     "format": "prettier --write src/**/*.ts",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
