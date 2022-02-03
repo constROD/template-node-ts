@@ -19,7 +19,7 @@ FROM node:17-alpine3.14
 # Remove this. Once you put this in Environment Variable in the server.
 ENV PORT=3000
 
-# Copy build and node_modules from --builder or /app.
+# Copy build and node_modules folder from --builder or /app.
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 
