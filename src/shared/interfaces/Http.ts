@@ -3,7 +3,7 @@ export interface IHttpResponse {
   error?: unknown;
   statusCode: number;
   code: number;
-  records?: unknown[];
+  records?: unknown;
 }
 
 export interface IHttpRequest {
