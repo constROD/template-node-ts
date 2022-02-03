@@ -1,6 +1,6 @@
 FROM node:17-alpine3.14 AS builder
 
-RUN mkdir -p /app/node_modules && chown -R node:node /app
+RUN mkdir -p /app/node_modules && chmod -R 775 /app
 
 WORKDIR /app
 
@@ -9,13 +9,7 @@ COPY package.json package.json
 # COPY migration_orm.js migration_orm.js
 COPY src src
 
-RUN yarn
-
-COPY --chown=node:node . .
-
-RUN yarn build
-
-USER node
+RUN yarn && yarn build
 
 FROM node:17-alpine3.14
 
