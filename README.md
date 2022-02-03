@@ -20,6 +20,12 @@
 }
 ```
 
+- **(Optional):** Do this if you are using `nvm`.
+
+```bash
+$ nvm use
+```
+
 - Install Dependencies.
 
 ```bash
