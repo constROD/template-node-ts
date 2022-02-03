@@ -5,8 +5,8 @@ export default {
   swagger: '2.0',
   info: {
     version: '1.0.0',
-    title: 'Symple API Users Service',
-    description: 'Symple API Users Service',
+    title: 'API Tests Service',
+    description: 'API Tests Service',
 
     license: {
       name: 'Apache 2.0',
