@@ -2,8 +2,6 @@ import TestRouter from './Test';
 
 import CommonUtil from '../shared/utils/Common';
 
-const rootRoutes = {
-  tests: CommonUtil.createRoute('/v1', TestRouter),
+export const rootRoutes = {
+  tests: CommonUtil.createRoute('/tests', TestRouter),
 };
-
-export default rootRoutes;

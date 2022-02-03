@@ -23,6 +23,46 @@ class TestController {
       res.status(results.statusCode).json(results);
     }
   }
+
+  static update(_: Request, res: Response) {
+    try {
+      const results = TestService.update();
+      res.status(results.statusCode).json(results);
+    } catch (error) {
+      const results = HTTP_RESPONSES[HttpResponseType.ServerError];
+      res.status(results.statusCode).json(results);
+    }
+  }
+
+  static delete(_: Request, res: Response) {
+    try {
+      const results = TestService.delete();
+      res.status(results.statusCode).json(results);
+    } catch (error) {
+      const results = HTTP_RESPONSES[HttpResponseType.ServerError];
+      res.status(results.statusCode).json(results);
+    }
+  }
+
+  static archive(_: Request, res: Response) {
+    try {
+      const results = TestService.archive();
+      res.status(results.statusCode).json(results);
+    } catch (error) {
+      const results = HTTP_RESPONSES[HttpResponseType.ServerError];
+      res.status(results.statusCode).json(results);
+    }
+  }
+
+  static restore(_: Request, res: Response) {
+    try {
+      const results = TestService.restore();
+      res.status(results.statusCode).json(results);
+    } catch (error) {
+      const results = HTTP_RESPONSES[HttpResponseType.ServerError];
+      res.status(results.statusCode).json(results);
+    }
+  }
 }
 
 export default TestController;
