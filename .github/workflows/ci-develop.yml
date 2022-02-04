@@ -19,8 +19,24 @@ jobs:
   #       env:
   #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17.3.0
+
+      - name: Run ESLint
+        run: |
+          yarn install --immutable --immutable-cache
+          yarn lint
+
   test:
     runs-on: ubuntu-latest
+    needs: lint
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,7 +45,7 @@ jobs:
       - name: Setup Node Version
         uses: actions/setup-node@v1
         with:
-          node-version: 16.13.0
+          node-version: 17.3.0
       - run: |
           yarn
           yarn test
