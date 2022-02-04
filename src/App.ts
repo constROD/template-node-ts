@@ -25,13 +25,13 @@ const createServer = () => {
   /* Routes */
   app.use(tests.path, tests.router);
 
-  /* Not Found */
-  app.use('*', CommonMiddleware.notFound);
-
   /* Health Check */
   app.get('/health', (_, res) => {
     res.status(200).send({ name: 'api-service', message: `I'm healthy` });
   });
+
+  /* Not Found */
+  app.use('*', CommonMiddleware.notFound);
 
   return app;
 };
