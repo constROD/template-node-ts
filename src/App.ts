@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { rootRoutes } from './routes';
-import APIMiddleware from './shared/middlewares/Common';
+import CommonMiddleware from './shared/middlewares/Common';
 import swaggerDOC from './swagger';
 
 import compression from 'compression';
@@ -24,7 +24,7 @@ const createServer = () => {
 
   /* Routes */
   app.use(tests.path, tests.router);
-  app.use('*', APIMiddleware.notFound);
+  app.use('*', CommonMiddleware.notFound);
 
   return app;
 };
