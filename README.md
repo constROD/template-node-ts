@@ -39,7 +39,7 @@ $ yarn
 $ yarn dev
 ```
 
-## Run in **production** mode.
+## Run in production mode
 
 - **without Docker:**
 
