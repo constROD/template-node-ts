@@ -1,0 +1,35 @@
+name: QA Deployment
+on:
+  pull_request:
+    branches:
+      - 'develop'
+      - 'release'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17.3.0
+      - run: |
+          yarn
+          yarn test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy to Surge
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17.3.0
+      - run: |
+          npm install --global surge
+          yarn
+          yarn build 
+          surge ./build ${GITHUB_REF##*/}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
