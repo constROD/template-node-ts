@@ -17,4 +17,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           pass_on_octokit_error: false
-          configuration_path: '.github/PR-checker.config.json'
+          configuration_path: '.github/json/PR-checker.config.json'
