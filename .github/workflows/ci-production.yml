@@ -6,7 +6,7 @@ on:
 env:
   GIT_HEAD_BRANCH: ${{ github.head_ref }}
   GIT_BASE_BRANCH: ${{ github.base_ref }}
-  GIT_PR_URL: https://github.com/nyfulcrum/template-node-typescript/pull/${{ github.event.pull_request.number }}
+  GIT_PR_URL: https://github.com/constROD/template-node-typescript/pull/${{ github.event.pull_request.number }}
 
 jobs:
   lint:
@@ -102,7 +102,6 @@ jobs:
         with:
           node-version: 17.3.0
       - run: |
-          echo SKIP_PREFLIGHT_CHECK=true >> .env
           yarn
           yarn test
 
