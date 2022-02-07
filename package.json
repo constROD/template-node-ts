@@ -25,7 +25,8 @@
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
     "pre-commit": "lint-staged --allow-empty --concurrent false",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "git:develop": "git checkout develop && git pull origin develop && git branch | grep -v \"main\\|develop\" | xargs git branch -D"
   },
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
