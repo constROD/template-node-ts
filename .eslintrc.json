@@ -62,6 +62,7 @@
         }
       }
     ],
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
