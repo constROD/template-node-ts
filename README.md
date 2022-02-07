@@ -73,5 +73,5 @@ $ docker build -t {image_name} .
 - Run.
 
 ```bash
-$ docker run -d -p {machine_port}:{container_port} --name {container_name} {image-name}
+$ docker run -d -p {machine_port}:{container_port} --name {container_name} {image_name}
 ```
