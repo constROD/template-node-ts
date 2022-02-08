@@ -1,4 +1,4 @@
-/*
+/* 
   Code Scheme
   0 - Sever Error
   1 - Success
@@ -10,7 +10,7 @@
   7 - Bad Request
   8 - Unauthorized
   9 - Conflict
-  10 - Not Found
+  10 - Conflict
 */
 
 export enum Code {
@@ -39,6 +39,11 @@ export enum HttpResponseType {
   Unauthorized = 'unauthorized',
   Conflict = 'conflict',
   NotFound = 'notFound',
+}
+
+export enum XHeader {
+  IdToken = 'X-ID-TOKEN',
+  AccessToken = 'X-ACCESS-TOKEN',
 }
 
 export const HTTP_RESPONSES = {

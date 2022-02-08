@@ -3,17 +3,20 @@ export interface IHttpResponse {
   error?: unknown;
   statusCode: number;
   code: number;
-  records?: unknown;
+  results?: unknown;
 }
 
 export interface IHttpRequest {
   url: string;
   headers?: { [key: string]: unknown };
-}
-
-export interface IHttpGETRequest extends IHttpRequest {
   params?: { [key: string]: unknown };
 }
+
+export interface IHttpOptions {
+  isPublic?: boolean;
+}
+
+export type IHttpGETRequest = IHttpRequest;
 
 export interface IHttpPOSTRequest extends IHttpRequest {
   body?: { [key: string]: unknown };
