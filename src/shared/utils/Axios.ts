@@ -1,16 +1,8 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { XHeader, HTTP_RESPONSES, HttpResponseType, Code } from '../constants/Http';
-import {
-  IHttpResponse,
-  IHttpGETRequest,
-  IHttpOptions,
-  IHttpPOSTRequest,
-  IHttpPUTRequest,
-  IHttpDELETERequest,
-} from '../interfaces/Http';
+import { IHttpRequest, IHttpOptions, IHttpResponse } from '../interfaces/Http';
 
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const PrivateInstance = axios.create();
 const PublicInstance = axios.create();
@@ -25,8 +17,7 @@ PrivateInstance.interceptors.request.use(config => {
 
 PrivateInstance.interceptors.response.use(
   res => res,
-  err => {
-    const error = err as AxiosError;
+  error => {
     if (!error.response) {
       return Promise.reject({
         ...error,
@@ -63,74 +54,19 @@ PublicInstance.interceptors.response.use(
   }
 );
 
-class AxiosUtil {
-  static async GET<R = IHttpResponse>(
-    request: IHttpGETRequest,
-    options: IHttpOptions = { isPublic: false }
-  ): Promise<AxiosResponse<R>> {
-    try {
-      const { isPublic } = options;
-      const instance = isPublic ? PublicInstance : PrivateInstance;
-      const data = await instance({ method: 'GET', ...request } as AxiosRequestConfig);
-      return data;
-    } catch (err) {
-      const error = err as AxiosResponse<R>;
-      return error;
-    }
+export const AxiosUtil = async <R = unknown>(
+  request: IHttpRequest,
+  options: IHttpOptions = { isPublic: false }
+): Promise<AxiosResponse<IHttpResponse<R>>> => {
+  try {
+    const { isPublic } = options;
+    const instance = isPublic ? PublicInstance : PrivateInstance;
+    const data = await instance({ ...request, data: request.body });
+    return data;
+  } catch (err) {
+    const error = err as AxiosResponse<IHttpResponse<R>>;
+    return error;
   }
-
-  static async POST<R = IHttpResponse>(
-    request: IHttpPOSTRequest,
-    options: IHttpOptions = { isPublic: false }
-  ): Promise<AxiosResponse<R>> {
-    try {
-      const { isPublic } = options;
-      const instance = isPublic ? PublicInstance : PrivateInstance;
-      const data = await instance({
-        method: 'POST',
-        ...request,
-        data: request.body,
-      } as AxiosRequestConfig);
-      return data;
-    } catch (err) {
-      const error = err as AxiosResponse<R>;
-      return error;
-    }
-  }
-
-  static async PUT<R = IHttpResponse>(
-    request: IHttpPUTRequest,
-    options: IHttpOptions = { isPublic: false }
-  ): Promise<AxiosResponse<R>> {
-    try {
-      const { isPublic } = options;
-      const instance = isPublic ? PublicInstance : PrivateInstance;
-      const data = await instance({
-        method: 'PUT',
-        ...request,
-        data: request.body,
-      } as AxiosRequestConfig);
-      return data;
-    } catch (err) {
-      const error = err as AxiosResponse<R>;
-      return error;
-    }
-  }
-
-  static async DELETE<R = IHttpResponse>(
-    request: IHttpDELETERequest,
-    options: IHttpOptions = { isPublic: false }
-  ): Promise<AxiosResponse<R>> {
-    try {
-      const { isPublic } = options;
-      const instance = isPublic ? PublicInstance : PrivateInstance;
-      const data = await instance({ method: 'DELETE', ...request } as AxiosRequestConfig);
-      return data;
-    } catch (err) {
-      const error = err as AxiosResponse<R>;
-      return error;
-    }
-  }
-}
+};
 
 export default AxiosUtil;

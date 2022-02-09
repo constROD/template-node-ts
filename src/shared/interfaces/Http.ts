@@ -1,27 +1,20 @@
-export interface IHttpResponse {
+import { IKeyValue } from './Common';
+
+import { AxiosRequestConfig } from 'axios';
+
+export interface IHttpResponse<R = unknown> {
   message: string;
   error?: unknown;
   statusCode: number;
   code: number;
-  results?: unknown;
+  records?: R;
 }
 
-export interface IHttpRequest {
-  url: string;
-  headers?: { [key: string]: unknown };
-  params?: { [key: string]: unknown };
-}
+export type IHttpRequest<P = IKeyValue, B = IKeyValue> = {
+  params?: P;
+  body?: B;
+} & AxiosRequestConfig;
 
 export interface IHttpOptions {
   isPublic?: boolean;
 }
-
-export type IHttpGETRequest = IHttpRequest;
-
-export interface IHttpPOSTRequest extends IHttpRequest {
-  body?: { [key: string]: unknown };
-}
-
-export type IHttpPUTRequest = IHttpPOSTRequest;
-
-export type IHttpDELETERequest = IHttpGETRequest;
