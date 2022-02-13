@@ -5,6 +5,7 @@
 /commitlint.config.js
 /jest.*.ts
 /Dockerfile
+/migration_orm.js
 
 # Caches
 /.eslintcache

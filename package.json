@@ -65,8 +65,11 @@
     "date-fns": "^2.28.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.1.0",
-    "swagger-ui-express": "^4.3.0"
+    "swagger-ui-express": "^4.3.0",
+    "typeorm": "^0.2.41"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix",
