@@ -54,7 +54,7 @@ PublicInstance.interceptors.response.use(
   }
 );
 
-export const AxiosUtil = async <R = unknown>(
+export const AxiosUtil = async <R = undefined>(
   request: IHttpRequest,
   options: IHttpOptions = { isPublic: false }
 ): Promise<AxiosResponse<IHttpResponse<R>>> => {

@@ -1,5 +1,4 @@
-import { IKeyValue } from './Common';
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosRequestConfig } from 'axios';
 
 export interface IHttpResponse<R = unknown> {
@@ -10,9 +9,9 @@ export interface IHttpResponse<R = unknown> {
   records?: R;
 }
 
-export type IHttpRequest<P = IKeyValue, B = IKeyValue> = {
-  params?: P;
-  body?: B;
+export type IHttpRequest = {
+  params?: any;
+  body?: any;
 } & AxiosRequestConfig;
 
 export interface IHttpOptions {
