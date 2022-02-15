@@ -6,7 +6,7 @@ class TestService {
       const records: unknown[] = [];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Created],
-        message: 'The record was retrieved successfully.',
+        message: 'The record was created successfully.',
         records,
       };
     } catch (error) {
