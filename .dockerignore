@@ -19,9 +19,8 @@
 # Miscellaneous
 /.DS_Store
 /.env
-/.env.development
-/.env.test
-/.env.production
+/.env.*
+/.npmrc
 /package-lock.json
 
 # Logs

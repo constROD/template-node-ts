@@ -17,9 +17,8 @@
 # Miscellaneous
 /.DS_Store
 /.env
-/.env.development
-/.env.test
-/.env.production
+/.env.*
+/.npmrc
 
 # Logs
 /*-error.log
