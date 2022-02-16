@@ -28,7 +28,7 @@ PrivateInstance.interceptors.response.use(
   res => res,
   err => {
     if (!err.response) {
-      return Promise.reject({ ...err, ...defaultError(err) });
+      return Promise.reject({ ...err, ...defaultError() });
     }
 
     if (err.response.data.code === Code.Unauthorized) {
@@ -43,7 +43,7 @@ PublicInstance.interceptors.response.use(
   res => res,
   err => {
     if (!err.response) {
-      return Promise.reject({ ...err, ...defaultError(err) });
+      return Promise.reject({ ...err, ...defaultError() });
     }
 
     return Promise.reject({ ...err.response, ...defaultError(err.response.data) });
