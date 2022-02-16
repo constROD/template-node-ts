@@ -5,7 +5,7 @@ export interface IHttpResponse<R = undefined> {
   message: string;
   statusCode: number;
   code: number;
-  records?: R[];
+  records?: R;
   error?: Error;
 }
 
