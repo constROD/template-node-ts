@@ -3,10 +3,10 @@ import { AxiosRequestConfig } from 'axios';
 
 export interface IHttpResponse<R = unknown> {
   message: string;
-  error?: unknown;
   statusCode: number;
   code: number;
   records?: R;
+  error?: Error;
 }
 
 export type IHttpRequest = {

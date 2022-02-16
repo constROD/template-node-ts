@@ -1,7 +1,8 @@
 import { HTTP_RESPONSES, HttpResponseType } from '../constants/Http';
+import { IHttpResponse } from '../interfaces/Http';
 
 class TestService {
-  static create() {
+  static create(): IHttpResponse {
     try {
       const records: unknown[] = [];
       return {
@@ -18,7 +19,7 @@ class TestService {
     }
   }
 
-  static retrieve() {
+  static retrieve(): IHttpResponse {
     try {
       const records: unknown[] = [];
       return {
@@ -35,7 +36,7 @@ class TestService {
     }
   }
 
-  static update() {
+  static update(): IHttpResponse {
     try {
       const records: unknown[] = [];
       return {
@@ -52,7 +53,7 @@ class TestService {
     }
   }
 
-  static delete() {
+  static delete(): IHttpResponse {
     try {
       const records: unknown[] = [];
       return {
@@ -69,7 +70,7 @@ class TestService {
     }
   }
 
-  static archive() {
+  static archive(): IHttpResponse {
     try {
       const records: unknown[] = [];
       return {
@@ -86,7 +87,7 @@ class TestService {
     }
   }
 
-  static restore() {
+  static restore(): IHttpResponse {
     try {
       const records: unknown[] = [];
       return {
