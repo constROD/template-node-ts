@@ -6,7 +6,7 @@ export interface IHttpResponse<R = undefined> {
   statusCode: number;
   code: number;
   records?: R;
-  error?: Error;
+  error?: any;
 }
 
 export type IHttpRequest = {
