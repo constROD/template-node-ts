@@ -7,6 +7,14 @@ import axios, { AxiosResponse } from 'axios';
 const PrivateInstance = axios.create();
 const PublicInstance = axios.create();
 
+const defaultError = (errorData?: unknown) => ({
+  data: {
+    ...HTTP_RESPONSES[HttpResponseType.ServerError],
+    message: `Something went wrong. Please try again.`,
+    error: errorData,
+  },
+});
+
 PrivateInstance.interceptors.request.use(config => {
   if (config.headers) {
     config.headers[XHeader.IdToken] = '';
@@ -17,40 +25,27 @@ PrivateInstance.interceptors.request.use(config => {
 
 PrivateInstance.interceptors.response.use(
   res => res,
-  error => {
-    if (!error.response) {
-      return Promise.reject({
-        ...error,
-        data: {
-          ...HTTP_RESPONSES[HttpResponseType.ServerError],
-          message: `Can't connect to the server. Please try again later.`,
-          error,
-        },
-      });
+  err => {
+    if (!err.response) {
+      return Promise.reject({ ...err, ...defaultError(err) });
     }
 
-    if (error.response.data.code === Code.Unauthorized) {
+    if (err.response.data.code === Code.Unauthorized) {
       // do something
     }
-    return Promise.reject(error.response);
+
+    return Promise.reject({ ...err.response, ...defaultError(err.response.data) });
   }
 );
 
 PublicInstance.interceptors.response.use(
   res => res,
-  error => {
-    if (!error.response) {
-      return Promise.reject({
-        ...error,
-        data: {
-          ...HTTP_RESPONSES[HttpResponseType.ServerError],
-          message: `Can't connect to the server. Please try again later.`,
-          error,
-        },
-      });
+  err => {
+    if (!err.response) {
+      return Promise.reject({ ...err, ...defaultError(err) });
     }
 
-    return Promise.reject(error.response);
+    return Promise.reject({ ...err.response, ...defaultError(err.response.data) });
   }
 );
 
