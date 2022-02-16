@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-param-reassign */
 import { XHeader, HTTP_RESPONSES, HttpResponseType, Code } from '../constants/Http';
 import { IHttpRequest, IHttpOptions, IHttpResponse } from '../interfaces/Http';
@@ -7,11 +8,11 @@ import axios, { AxiosResponse } from 'axios';
 const PrivateInstance = axios.create();
 const PublicInstance = axios.create();
 
-const defaultError = (errorData?: unknown) => ({
+const defaultError = (errorData: any = {}) => ({
   data: {
     ...HTTP_RESPONSES[HttpResponseType.ServerError],
     message: `Something went wrong. Please try again.`,
-    error: errorData,
+    ...errorData,
   },
 });
 
