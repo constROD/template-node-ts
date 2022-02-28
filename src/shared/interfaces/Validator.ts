@@ -3,7 +3,7 @@ export interface IValidatorError {
   message: string;
 }
 
-export interface IValidatorResponse<T> {
+export interface IValidatorResponse<T = undefined> {
   data?: T;
   error?: IValidatorError[];
 }
