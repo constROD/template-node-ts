@@ -11,13 +11,13 @@ export abstract class CommonEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'uuid', nullable: true })
   createdById: number;
 
-  @Column({ nullable: true })
+  @Column({ type: 'uuid', nullable: true })
   updatedById: number;
 
-  @Column({ nullable: true })
+  @Column({ type: 'uuid', nullable: true })
   deletedById: number;
 
   @CreateDateColumn({ nullable: true })
