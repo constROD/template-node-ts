@@ -11,7 +11,7 @@
   8 - Unauthorized
   9 - Conflict
   10 - Not Found
-  10 - Unprocessable Entity
+  11 - Unprocessable Entity
 */
 
 export enum Code {
