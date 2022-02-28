@@ -1,5 +1,13 @@
-// export interface ITestCreate {}
-// export interface ITestUpdate {}
-// export interface ITestDelete {}
-// export interface ITestArchive {}
-// export interface ITestRestore {}
+export interface ITestRetrieveRequest {
+  id?: string;
+  name?: string;
+}
+
+export interface ITestCreateRequest {
+  name: string;
+}
+
+export interface ITestUpdateRequest {
+  id: string;
+  name?: string;
+}

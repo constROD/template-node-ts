@@ -69,7 +69,8 @@
     "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0",
-    "typeorm": "^0.2.41"
+    "typeorm": "^0.2.41",
+    "yup": "^0.32.11"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix",
