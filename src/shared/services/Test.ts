@@ -8,7 +8,7 @@ class TestService {
       const records: unknown[] = [request];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Created],
-        message: 'The record was created successfully.',
+        message: 'The record(s) was created successfully.',
         records,
       };
     } catch (error) {
@@ -25,7 +25,7 @@ class TestService {
       const records: unknown[] = [request];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Success],
-        message: 'The record was retrieved successfully.',
+        message: 'The record(s) was retrieved successfully.',
         records,
       };
     } catch (error) {
@@ -42,7 +42,7 @@ class TestService {
       const records: unknown[] = [request];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Updated],
-        message: 'The record was updated successfully.',
+        message: 'The record(s) was updated successfully.',
         records,
       };
     } catch (error) {
@@ -59,7 +59,7 @@ class TestService {
       const records: unknown[] = [];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Deleted],
-        message: 'The record was deleted successfully.',
+        message: 'The record(s) was deleted successfully.',
         records,
       };
     } catch (error) {
@@ -76,7 +76,7 @@ class TestService {
       const records: unknown[] = [];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Archived],
-        message: 'The record was archived successfully.',
+        message: 'The record(s) was archived successfully.',
         records,
       };
     } catch (error) {
@@ -93,7 +93,7 @@ class TestService {
       const records: unknown[] = [];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Restored],
-        message: 'The record was restored successfully.',
+        message: 'The record(s) was restored successfully.',
         records,
       };
     } catch (error) {
