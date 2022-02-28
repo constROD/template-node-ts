@@ -1,10 +1,11 @@
 import { HTTP_RESPONSES, HttpResponseType } from '../constants/Http';
 import { IHttpResponse } from '../interfaces/Http';
+import { ITestCreateRequest, ITestRetrieveRequest, ITestUpdateRequest } from '../interfaces/Test';
 
 class TestService {
-  static create(): IHttpResponse {
+  static create(request: ITestCreateRequest): IHttpResponse {
     try {
-      const records: unknown[] = [];
+      const records: unknown[] = [request];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Created],
         message: 'The record was created successfully.',
@@ -19,9 +20,9 @@ class TestService {
     }
   }
 
-  static retrieve(): IHttpResponse {
+  static retrieve(request: ITestRetrieveRequest): IHttpResponse {
     try {
-      const records: unknown[] = [];
+      const records: unknown[] = [request];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Success],
         message: 'The record was retrieved successfully.',
@@ -36,9 +37,9 @@ class TestService {
     }
   }
 
-  static update(): IHttpResponse {
+  static update(request: ITestUpdateRequest): IHttpResponse {
     try {
-      const records: unknown[] = [];
+      const records: unknown[] = [request];
       return {
         ...HTTP_RESPONSES[HttpResponseType.Updated],
         message: 'The record was updated successfully.',

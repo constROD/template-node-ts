@@ -10,7 +10,8 @@
   7 - Bad Request
   8 - Unauthorized
   9 - Conflict
-  10 - Conflict
+  10 - Not Found
+  10 - Unprocessable Entity
 */
 
 export enum Code {
@@ -25,6 +26,7 @@ export enum Code {
   Unauthorized = 8,
   Conflict = 9,
   NotFound = 10,
+  UnprocessableEntity = 11,
 }
 
 export enum HttpResponseType {
@@ -39,6 +41,7 @@ export enum HttpResponseType {
   Unauthorized = 'unauthorized',
   Conflict = 'conflict',
   NotFound = 'notFound',
+  UnprocessableEntity = 'unprocessableEntity',
 }
 
 export enum XHeader {
@@ -101,5 +104,10 @@ export const HTTP_RESPONSES = {
     message: 'Not Found',
     statusCode: 404,
     code: 10,
+  },
+  unprocessableEntity: {
+    message: 'Unprocessable Entity',
+    statusCode: 422,
+    code: 11,
   },
 };

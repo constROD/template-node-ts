@@ -1,33 +1,76 @@
 import { HTTP_RESPONSES, HttpResponseType } from '../shared/constants/Http';
+import {
+  ITestCreateRequest,
+  ITestRetrieveRequest,
+  ITestUpdateRequest,
+} from '../shared/interfaces/Test';
 import TestService from '../shared/services/Test';
+import {
+  testCreateValidator,
+  testRetrieveValidator,
+  testUpdateValidator,
+} from '../shared/validators/Test';
 
 import { Request, Response } from 'express';
 
 class TestController {
-  static create(_: Request, res: Response) {
+  static async create(req: Request, res: Response) {
     try {
-      const results = TestService.create();
-      res.status(results.statusCode).json(results);
+      const request: ITestCreateRequest = req.body;
+      const { data, error } = await testCreateValidator(request);
+
+      if (data) {
+        const results = TestService.create(data);
+        res.status(results.statusCode).json(results);
+      } else {
+        const results = {
+          ...HTTP_RESPONSES[HttpResponseType.UnprocessableEntity],
+          error,
+        };
+        res.status(results.statusCode).json(results);
+      }
     } catch (error) {
       const results = HTTP_RESPONSES[HttpResponseType.ServerError];
       res.status(results.statusCode).json(results);
     }
   }
 
-  static retrieve(_: Request, res: Response) {
+  static async retrieve(req: Request, res: Response) {
     try {
-      const results = TestService.retrieve();
-      res.status(results.statusCode).json(results);
+      const request = req.query as unknown as ITestRetrieveRequest;
+      const { data, error } = await testRetrieveValidator(request);
+
+      if (data) {
+        const results = TestService.retrieve(data);
+        res.status(results.statusCode).json(results);
+      } else {
+        const results = {
+          ...HTTP_RESPONSES[HttpResponseType.UnprocessableEntity],
+          error,
+        };
+        res.status(results.statusCode).json(results);
+      }
     } catch (error) {
       const results = HTTP_RESPONSES[HttpResponseType.ServerError];
       res.status(results.statusCode).json(results);
     }
   }
 
-  static update(_: Request, res: Response) {
+  static async update(req: Request, res: Response) {
     try {
-      const results = TestService.update();
-      res.status(results.statusCode).json(results);
+      const request: ITestUpdateRequest = req.body;
+      const { data, error } = await testUpdateValidator(request);
+
+      if (data) {
+        const results = TestService.update(data);
+        res.status(results.statusCode).json(results);
+      } else {
+        const results = {
+          ...HTTP_RESPONSES[HttpResponseType.UnprocessableEntity],
+          error,
+        };
+        res.status(results.statusCode).json(results);
+      }
     } catch (error) {
       const results = HTTP_RESPONSES[HttpResponseType.ServerError];
       res.status(results.statusCode).json(results);
