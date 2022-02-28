@@ -1,8 +1,23 @@
-export interface IIdValue {
-  id: string | number;
-  value: unknown;
+export interface ICommon extends ICommonCreate, ICommonUpdate, ICommonArchive {
+  id: string;
 }
 
-export interface IKeyValue {
-  [key: string]: unknown;
+export interface ICommonCreate {
+  createdById: string;
+  createdAt: Date | string;
+}
+
+export interface ICommonUpdate {
+  updatedById: string;
+  updatedAt: Date | string;
+}
+
+export interface ICommonArchive {
+  deletedById: string;
+  deletedAt: Date | string;
+}
+
+export interface ICommonRestore {
+  updatedById: string;
+  updatedAt: Date | string;
 }
