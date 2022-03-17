@@ -19,7 +19,8 @@
   "scripts": {
     "test": "jest",
     "dev": "tsnd --respawn --files ./src/index.ts",
-    "build": "rm -rf ./build && node --max-old-space-size=1024 ./node_modules/typescript/bin/tsc --skipLibCheck",
+    "build": "yarn clean && node --max-old-space-size=1024 ./node_modules/typescript/bin/tsc --skipLibCheck",
+    "clean": "rm -rf ./build",
     "start": "yarn build && pm2 start ./build/index.js",
     "analyze": "yarn build && source-map-explorer ./build/**/*.js",
     "format": "prettier --write ./src/**/*.ts",
