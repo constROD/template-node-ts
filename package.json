@@ -27,6 +27,11 @@
     "lint": "eslint ./src --ext .js,.ts",
     "lint:fix": "eslint ./src --fix --ext .js,.ts",
     "git:develop": "git checkout develop && git pull origin develop && git branch | grep -v \"main\\|staging\\|develop\" | xargs git branch -D",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config migration_orm.js",
+    "migration:run": "yarn build && yarn typeorm migration:run",
+    "migration:generate": "yarn build && yarn typeorm migration:generate -n",
+    "migration:create": "yarn build && yarn typeorm migration:create -n",
+    "migration:revert": "yarn build && yarn typeorm migration:revert",
     "pre-commit": "lint-staged --allow-empty --concurrent false",
     "prepare": "husky install"
   },
