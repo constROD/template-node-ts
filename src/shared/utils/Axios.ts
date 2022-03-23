@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-param-reassign */
 import { XHeader, HTTP_RESPONSES, HttpResponseType, Code } from '../constants/Http';
 import { IHttpRequest, IHttpOptions, IHttpResponse } from '../interfaces/Http';
 
