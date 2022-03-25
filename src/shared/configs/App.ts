@@ -1,10 +1,12 @@
+import { Zones } from '../constants/Common';
+
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 /* APP */
 export const APP_PORT = process.env.PORT;
-export const { APP_ZONE } = process.env;
+export const APP_ZONE: Zones = (process.env.APP_ZONE as Zones) || Zones.Develop;
 
 /* ORM */
 export const ORM_DB_SYNCHRONIZE = process.env.ORM_DB_SYNCHRONIZE === 'true';
