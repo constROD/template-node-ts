@@ -19,7 +19,8 @@
     "experimentalDecorators": true,
     "declaration": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "skipLibCheck": true,
+    "baseUrl": "."
   },
   "exclude": [
     "./node_modules",
