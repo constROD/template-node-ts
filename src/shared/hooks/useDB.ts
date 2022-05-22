@@ -13,13 +13,9 @@ export const useDB = async (args: IManager = { query: '' }) => {
 
   let queryResults: unknown[] | string = '';
 
-  try {
-    if (query) {
-      queryResults = await connection.query(query, parameters || []);
-    }
-
-    return { queryRunner, queryResults };
-  } catch (error) {
-    return { queryRunner, queryResults };
+  if (query) {
+    queryResults = await connection.query(query, parameters || []);
   }
+
+  return { queryRunner, queryResults };
 };

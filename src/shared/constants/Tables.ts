@@ -1,1 +1,3 @@
-export enum Tables {}
+export enum Tables {
+  Tests = 'tests',
+}

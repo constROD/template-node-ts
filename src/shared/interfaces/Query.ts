@@ -8,3 +8,8 @@ export interface IParameterUpdate {
   columns: string;
   values: unknown[];
 }
+
+export interface IWhereExpression {
+  whereExpression: string;
+  parameters: unknown[];
+}

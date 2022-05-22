@@ -5,11 +5,9 @@ import { Router as useRouter } from 'express';
 const Router: useRouter = useRouter();
 
 /* Routes */
-Router.post('/', TestController.create);
-Router.get('/', TestController.retrieve);
-Router.put('/', TestController.update);
-Router.delete('/', TestController.delete);
-Router.delete('/archive', TestController.archive);
-Router.put('/restore', TestController.restore);
+Router.get('/', (req, res) => TestController.retrieve(req, res));
+Router.post('/', (req, res) => TestController.create(req, res));
+Router.put('/', (req, res) => TestController.update(req, res));
+Router.delete('/', (req, res) => TestController.delete(req, res));
 
 export default Router;

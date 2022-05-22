@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { rootRoutes } from './routes';
 import CommonMiddleware from './shared/middlewares/Common';
 import swaggerDOC from './swagger';

@@ -1,23 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { ITestCreateRequest, ITestRetrieveRequest, ITestUpdateRequest } from '../interfaces/Test';
 import { IValidatorError, IValidatorResponse } from '../interfaces/Validator';
 
 import * as yup from 'yup';
 
-export const testRetrieveValidator = (
-  values: ITestRetrieveRequest
-): Promise<IValidatorResponse<ITestRetrieveRequest>> =>
+const validate = <T>(schema: yup.ObjectSchema<any>, values: T): Promise<IValidatorResponse<T>> =>
   new Promise(resolve => {
-    const schema = yup.object().shape({
-      id: yup.string().optional(),
-      name: yup.string().min(6, 'Name must be atleast 6 characters.').optional(),
-    });
-
     schema
       .validate(values, { abortEarly: false, stripUnknown: true })
       .then(data => {
-        const sanitizeData = data as ITestRetrieveRequest;
-        resolve({ data: sanitizeData, error: undefined });
+        const sanitizedData = Object.keys(data).length !== 0 ? (data as T) : undefined;
+        resolve({ data: sanitizedData, error: undefined });
       })
       .catch(err => {
         const error = err.inner.map((e: { path: string; message: string }) => ({
@@ -27,50 +19,34 @@ export const testRetrieveValidator = (
         resolve({ data: undefined, error });
       });
   });
+
+export const testRetrieveValidator = (
+  values: ITestRetrieveRequest
+): Promise<IValidatorResponse<ITestRetrieveRequest>> => {
+  const schema = yup.object().shape({
+    id: yup.string().optional(),
+    name: yup.string().min(6, 'Name must be atleast 6 characters.').optional(),
+  });
+
+  return validate<ITestRetrieveRequest>(schema, values);
+};
 
 export const testCreateValidator = (
   values: ITestCreateRequest
-): Promise<IValidatorResponse<ITestCreateRequest>> =>
-  new Promise(resolve => {
-    const schema = yup.object().shape({
-      name: yup.string().min(6, 'Name must be atleast 6 characters.').required(),
-    });
-
-    schema
-      .validate(values, { abortEarly: false, stripUnknown: true })
-      .then(data => {
-        const sanitizeData = data as ITestCreateRequest;
-        resolve({ data: sanitizeData, error: undefined });
-      })
-      .catch(err => {
-        const error = err.inner.map((e: { path: string; message: string }) => ({
-          id: e.path,
-          message: e.message,
-        })) as IValidatorError[];
-        resolve({ data: undefined, error });
-      });
+): Promise<IValidatorResponse<ITestCreateRequest>> => {
+  const schema = yup.object().shape({
+    name: yup.string().min(6, 'Name must be atleast 6 characters.').required(),
   });
+
+  return validate<ITestCreateRequest>(schema, values);
+};
 
 export const testUpdateValidator = (
   values: ITestUpdateRequest
-): Promise<IValidatorResponse<ITestUpdateRequest>> =>
-  new Promise(resolve => {
-    const schema = yup.object().shape({
-      id: yup.string().required('id is required.'),
-      name: yup.string().min(6, 'Name must be atleast 6 characters.').optional(),
-    });
-
-    schema
-      .validate(values, { abortEarly: false, stripUnknown: true })
-      .then(data => {
-        const sanitizeData = data as ITestUpdateRequest;
-        resolve({ data: sanitizeData, error: undefined });
-      })
-      .catch(err => {
-        const error = err.inner.map((e: { path: string; message: string }) => ({
-          id: e.path,
-          message: e.message,
-        })) as IValidatorError[];
-        resolve({ data: undefined, error });
-      });
+): Promise<IValidatorResponse<ITestUpdateRequest>> => {
+  const schema = yup.object().shape({
+    name: yup.string().min(6, 'Name must be atleast 6 characters.').optional(),
   });
+
+  return validate<ITestUpdateRequest>(schema, values);
+};
