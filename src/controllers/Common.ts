@@ -7,23 +7,26 @@ import { Request, Response } from 'express';
 
 type IValidator<T> = (values: T) => Promise<IValidatorResponse<T>>;
 
-interface IValidators<R, C, U> {
-  retrieve?: IValidator<R>;
-  create?: IValidator<C>;
-  update?: IValidator<U>;
+interface IValidators<RetrieveType, CreateType, UpdateType> {
+  retrieve?: IValidator<RetrieveType>;
+  create?: IValidator<CreateType>;
+  update?: IValidator<UpdateType>;
 }
 
-interface ICommonConstructor<T, R, C, U> {
-  service: CommonService<T, R, C, U>;
-  validators: IValidators<R, C, U>;
+interface ICommonConstructor<T, RetrieveType, CreateType, UpdateType> {
+  service: CommonService<T, RetrieveType, CreateType, UpdateType>;
+  validators: IValidators<RetrieveType, CreateType, UpdateType>;
 }
 
-class CommonController<EntityType, R = any, C = any, U = any> {
-  private service: CommonService<EntityType, R, C, U>;
+class CommonController<EntityType, RetrieveType = any, CreateType = any, UpdateType = any> {
+  private service: CommonService<EntityType, RetrieveType, CreateType, UpdateType>;
 
-  private validators: IValidators<R, C, U>;
+  private validators: IValidators<RetrieveType, CreateType, UpdateType>;
 
-  constructor({ service, validators = {} }: ICommonConstructor<EntityType, R, C, U>) {
+  constructor({
+    service,
+    validators = {},
+  }: ICommonConstructor<EntityType, RetrieveType, CreateType, UpdateType>) {
     this.service = service;
     this.validators = validators;
   }
@@ -51,8 +54,8 @@ class CommonController<EntityType, R = any, C = any, U = any> {
   }
 
   async retrieve(req: Request, res: Response) {
-    const { data: filters, error: validationError } = await this.validate<R>({
-      values: req.query as any as R,
+    const { data: filters, error: validationError } = await this.validate<RetrieveType>({
+      values: req.query as any as RetrieveType,
       validator: this.validators.retrieve,
     });
 
@@ -75,8 +78,8 @@ class CommonController<EntityType, R = any, C = any, U = any> {
   }
 
   async create(req: Request, res: Response) {
-    const { data, error: validationError } = await this.validate<C>({
-      values: req.body as C,
+    const { data, error: validationError } = await this.validate<CreateType>({
+      values: req.body as CreateType,
       validator: this.validators.create,
     });
 
@@ -101,7 +104,7 @@ class CommonController<EntityType, R = any, C = any, U = any> {
   async update(req: Request, res: Response) {
     const id = req.query.id as string;
     const { data, error: validationError } = await this.validate({
-      values: req.body as U,
+      values: req.body as UpdateType,
       validator: this.validators.update,
     });
 

@@ -9,7 +9,7 @@ interface ICommonConstructor {
   };
 }
 
-class CommonService<EntityType, R = any, C = any, U = any> {
+class CommonService<EntityType, RetrieveType = any, CreateType = any, UpdateType = any> {
   private tableName: string;
 
   private tableNameAlias: string;
@@ -22,7 +22,7 @@ class CommonService<EntityType, R = any, C = any, U = any> {
     this.retrieveOptions.selectColumns = retrieveOptions?.selectColumns || '*';
   }
 
-  async retrieve(filters?: R): Promise<EntityType[]> {
+  async retrieve(filters?: RetrieveType): Promise<EntityType[]> {
     const { whereExpression, parameters } = QueryUtil.generateWhereExpression(filters || {}, {
       tableName: this.tableName,
     });
@@ -38,7 +38,7 @@ class CommonService<EntityType, R = any, C = any, U = any> {
     return queryResults as EntityType[];
   }
 
-  async create(data?: C): Promise<EntityType[]> {
+  async create(data?: CreateType): Promise<EntityType[]> {
     const { columns, queryParams, values } = QueryUtil.generateColumnsParameterCreate(data || {});
 
     const query = `
@@ -51,7 +51,7 @@ class CommonService<EntityType, R = any, C = any, U = any> {
     return queryResults as EntityType[];
   }
 
-  async update(args: { data?: U; filters: { id: string } }): Promise<EntityType[]> {
+  async update(args: { data?: UpdateType; filters: { id: string } }): Promise<EntityType[]> {
     const updateArgs = (args || {}) as any;
     const { columns, values } = QueryUtil.generateColumnsParameterUpdate(updateArgs?.data);
     const { whereExpression, parameters } = QueryUtil.generateWhereExpression(updateArgs?.filters, {
