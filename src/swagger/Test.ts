@@ -23,10 +23,7 @@ export const tests = {
           schema: {
             type: 'object',
             properties: {
-              firstName: {
-                type: 'string',
-              },
-              lastName: {
+              name: {
                 type: 'string',
               },
             },
@@ -54,10 +51,7 @@ export const tests = {
               id: {
                 type: 'string',
               },
-              firstName: {
-                type: 'string',
-              },
-              lastName: {
+              name: {
                 type: 'string',
               },
             },
@@ -84,44 +78,6 @@ export const tests = {
       responses: {
         [HttpResponseType.Deleted]: {
           description: HTTP_RESPONSES[HttpResponseType.Deleted].message,
-        },
-      },
-    },
-  },
-  '/tests/archive': {
-    delete: {
-      tags: ['Tests'],
-      consumes: 'application/json',
-      parameters: [
-        {
-          name: 'id',
-          in: 'query',
-          required: true,
-          type: 'string',
-        },
-      ],
-      responses: {
-        [HttpResponseType.Archived]: {
-          description: HTTP_RESPONSES[HttpResponseType.Archived].message,
-        },
-      },
-    },
-  },
-  '/tests/restore': {
-    put: {
-      tags: ['Tests'],
-      consumes: 'application/json',
-      parameters: [
-        {
-          name: 'id',
-          in: 'query',
-          required: true,
-          type: 'string',
-        },
-      ],
-      responses: {
-        [HttpResponseType.Restored]: {
-          description: HTTP_RESPONSES[HttpResponseType.Restored].message,
         },
       },
     },
