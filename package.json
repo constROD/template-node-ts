@@ -1,11 +1,11 @@
 {
-  "name": "template-node-typescript",
+  "name": "template-node-ts",
   "version": "0.0.2",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "repository": "https://github.com/constrod/template-node-typescript",
+  "repository": "https://github.com/constrod/template-node-ts",
   "bugs": {
-    "url": "https://github.com/constrod/template-node-typescript/issues"
+    "url": "https://github.com/constrod/template-node-ts/issues"
   },
   "contributors": [
     {

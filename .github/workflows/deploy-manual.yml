@@ -1,0 +1,118 @@
+name: 'Manual Deploy'
+on: workflow_dispatch
+
+jobs:
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         ref: develop
+
+  #     - name: Setup Node Version
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 17.3.0
+
+  #     - name: Run ESLint and Test
+  #       run: |
+  #         yarn
+  #         yarn lint
+  #         yarn test
+
+  setup-environment:
+    # needs: [test]
+
+    outputs:
+      branch: ${{ steps.getBranch.outputs.branch }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch name
+        shell: bash
+        id: getBranch
+        run: echo "::set-output name=branch::${BRANCH_REF#refs/heads/}"
+        env:
+          BRANCH_REF: ${{ github.ref }}
+
+  # build:
+  #   needs: [setup-environment]
+
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         ref: ${{ needs.setup-environment.outputs.branch == 'develop' }}
+
+  #     - name: Configure AWS credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: us-east-1
+
+  #     - name: Login to Amazon ECR
+  #       uses: aws-actions/amazon-ecr-login@v1
+  #       id: login-ecr
+
+  #     - name: Build and Push Image to Develop
+  #       env:
+  #         CONTAINER_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         CONTAINER_REPOSITORY: template-node-ts
+  #       run: |
+  #         docker build -t $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:dev .
+  #         docker push $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:dev
+  #       if: ${{ needs.setup-environment.outputs.branch == 'develop' }}
+
+  #     - name: Build and Push Image to Staging
+  #       env:
+  #         CONTAINER_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         CONTAINER_REPOSITORY: template-node-ts
+  #       run: |
+  #         docker build -t $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:staging .
+  #         docker push $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:staging
+  #       if: ${{ needs.setup-environment.outputs.branch == 'staging' }}
+
+  #     - name: Build and Push Image to Staging
+  #       env:
+  #         CONTAINER_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         CONTAINER_REPOSITORY: template-node-ts
+  #       run: |
+  #         docker build -t $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:prod .
+  #         docker push $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:prod
+  #       if: ${{ needs.setup-environment.outputs.branch == 'main' }}
+
+  deploy:
+    # needs: [build]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH and Deploy to Develop
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USER }}
+          key: ${{ secrets.DEV_KEY_ED25519 }}
+          port: ${{ secrets.SSH_PORT }}
+          script: sh /home/ubuntu/deploy.sh template-node-ts ${{ needs.setup-environment.outputs.branch }}
+        if: ${{ needs.setup-environment.outputs.branch == 'develop' }}
+
+      - name: SSH and Deploy to Staging
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_KEY_ED25519 }}
+          port: ${{ secrets.SSH_PORT }}
+          script: sh /home/ubuntu/deploy.sh template-node-ts ${{ needs.setup-environment.outputs.branch }}
+        if: ${{ needs.setup-environment.outputs.branch == 'staging' }}
+
+      - name: SSH and Deploy to Production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_KEY_ED25519 }}
+          port: ${{ secrets.SSH_PORT }}
+          script: sh /home/ubuntu/deploy.sh template-node-ts ${{ needs.setup-environment.outputs.branch }}
+        if: ${{ needs.setup-environment.outputs.branch == 'main' }}

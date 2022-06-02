@@ -1,0 +1,66 @@
+name: 'Deploy to Develop'
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         ref: develop
+
+  #     - name: Setup Node Version
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 17.3.0
+
+  #     - name: Run ESLint and Test
+  #       run: |
+  #         yarn
+  #         yarn lint
+  #         yarn test
+
+  # build:
+  #   needs: [test]
+
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         ref: develop
+
+  #     - name: Configure AWS credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: us-east-1
+
+  #     - name: Login to Amazon ECR
+  #       uses: aws-actions/amazon-ecr-login@v1
+  #       id: login-ecr
+
+  #     - name: Build and Push Image
+  #       env:
+  #         CONTAINER_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         CONTAINER_REPOSITORY: template-node-ts
+  #       run: |
+  #         docker build -t $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:dev .
+  #         docker push $CONTAINER_REGISTRY/$CONTAINER_REPOSITORY:dev
+
+  deploy:
+    # needs: [build]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH and Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USER }}
+          key: ${{ secrets.DEV_KEY_ED25519 }}
+          port: ${{ secrets.SSH_PORT }}
+          script: sh /home/ubuntu/deploy.sh template-node-ts develop
