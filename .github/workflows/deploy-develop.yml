@@ -1,8 +1,8 @@
 name: 'Deploy to Develop'
-on:
-  push:
-    branches:
-      - develop
+# on:
+#   push:
+#     branches:
+#       - develop
 
 jobs:
   # test:
