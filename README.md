@@ -3,22 +3,6 @@
 ## Prerequisites
 
 - Download extension **ESLint** and **Prettier - Code formatter** in your VSCode.
-- Edit your VSCode `settings.json`.
-
-```json
-{
-  "editor.tabSize": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": false
-  },
-  "eslint.format.enable": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.lintTask.enable": true
-}
-```
 
 - **(Required for MacOSX):** Run this to give permission husky to run pre-commit hook.
 
