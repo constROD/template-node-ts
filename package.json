@@ -17,11 +17,12 @@
   "author": "Rodrick Alcantara <rialcantara21@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "setup": "cat .nvmrc | xargs nvm use",
     "dev": "tsnd --transpile-only --respawn --files ./src/index.ts",
     "clean": "rm -rf ./build",
     "build": "yarn clean && etsc",
     "start": "yarn build && pm2 start ./build/index.js",
+    "test": "jest",
     "analyze": "yarn build && source-map-explorer ./build/**/*.js",
     "format": "prettier --write ./src/**/*.ts",
     "lint": "eslint ./src --ext .js,.ts",
