@@ -83,7 +83,7 @@
     "yup": "^0.32.11"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --cache --fix",
+    "src/**/*.{js,ts}": "eslint --cache --fix",
     "**/*": "prettier --write --ignore-unknown"
   }
 }
