@@ -20,14 +20,14 @@ $ nvm use
 - Install Dependencies.
 
 ```bash
-$ yarn
+$ pnpm install
 ```
 
 - Create `.env` file for environment variables. `.env-sample` are the required environment variables.
 - Run in **development** mode.
 
 ```bash
-$ yarn dev
+$ pnpm run dev
 ```
 
 ## Run in production mode
@@ -37,13 +37,13 @@ $ yarn dev
 - Build the application.
 
 ```bash
-$ yarn build
+$ pnpm run build
 ```
 
 - Run.
 
 ```bash
-$ yarn start
+$ pnpm run start
 ```
 
 - **with Docker:** Download `Docker` in your machine or server.

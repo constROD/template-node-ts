@@ -23,6 +23,7 @@ dist
 .env.*
 .npmrc
 *-lock.json
+*-lock.yaml
 *.lock
 .idea
 *.suo

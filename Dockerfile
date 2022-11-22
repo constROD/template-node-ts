@@ -15,12 +15,12 @@ WORKDIR /app
 COPY migration_orm.js migration_orm.js
 COPY tsconfig.json tsconfig.json
 COPY package.json package.json
-COPY yarn.lock yarn.lock
+COPY pnpm-lock.yaml pnpm-lock.yaml
 COPY src src
 
 # Install dependencies and build the application.
 RUN echo ${APP_ENV} | base64 -d >.env
-RUN yarn && yarn build
+RUN pnpm install && pnpm run build
 
 FROM node:17-alpine3.14
 
