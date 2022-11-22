@@ -5,7 +5,7 @@ node_modules
 commitlint.config.js
 jest.*.ts
 Dockerfile
-migration_orm.js
+**/migrations/**
 
 # Caches
 .eslintcache

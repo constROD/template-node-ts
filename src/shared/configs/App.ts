@@ -9,7 +9,6 @@ export const APP_PORT = process.env.PORT;
 export const APP_ZONE: Zones = (process.env.APP_ZONE as Zones) || Zones.Develop;
 
 /* ORM */
-export const ORM_DB_SYNCHRONIZE = process.env.ORM_DB_SYNCHRONIZE === 'true';
 export const ORM_DB_LOGGING = process.env.ORM_DB_LOGGING === 'true';
 export const { ORM_DB_TYPE } = process.env;
 export const { ORM_DB_HOST } = process.env;

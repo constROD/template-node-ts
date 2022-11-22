@@ -1,6 +1,6 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["pnpm", "commitlint", "middlewares"],
+  "words": ["pnpm", "commitlint", "middlewares", "typeorm"],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }

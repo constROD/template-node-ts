@@ -5,6 +5,9 @@ FROM node:17-alpine3.14 AS builder
 ARG APP_ENV
 ENV APP_ENV=${APP_ENV}
 
+# Install pnpm globally
+RUN npm install -g pnpm@7.17.0
+
 # Create /app folder and add permission on the /app folder.
 RUN mkdir -p /app && chmod -R 775 /app
 
@@ -12,7 +15,6 @@ RUN mkdir -p /app && chmod -R 775 /app
 WORKDIR /app
 
 # Copy all required files from the repository for building the application.
-COPY migration_orm.js migration_orm.js
 COPY tsconfig.json tsconfig.json
 COPY package.json package.json
 COPY pnpm-lock.yaml pnpm-lock.yaml
