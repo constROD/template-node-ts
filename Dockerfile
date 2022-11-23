@@ -1,4 +1,4 @@
-FROM node:17-alpine3.14 AS builder
+FROM node:16-alpine3.14 AS builder
 
 # Environment Variables
 # APP_ENV should be encoded base64 -w 0
@@ -24,7 +24,7 @@ COPY src src
 RUN echo ${APP_ENV} | base64 -d >.env
 RUN pnpm install && pnpm run build
 
-FROM node:17-alpine3.14
+FROM node:16-alpine3.14
 
 # Remove this. Once you put this in Environment Variable in the server.
 ENV PORT=3000
