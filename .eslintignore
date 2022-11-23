@@ -2,7 +2,8 @@
 node_modules
 
 # Configs
-commitlint.config.js
+*.config.js
+*.config.ts
 jest.*.ts
 Dockerfile
 **/migrations/**
@@ -36,11 +37,8 @@ dist
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+*-debug.log*
+*-error.log*
 
 # Types
 
