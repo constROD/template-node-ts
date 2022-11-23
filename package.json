@@ -28,7 +28,6 @@
     "lint": "eslint ./src --ext .js,.ts",
     "lint:fix": "eslint ./src --fix --ext .js,.ts",
     "typeorm": "ts-node -r tsconfig-paths/register ./src/typeorm/cli.ts",
-    "migration:sync": "pnpm run typeorm schema:sync",
     "migration:run": "pnpm run typeorm migration:run",
     "migration:generate": "pnpm run typeorm migration:generate",
     "migration:create": "pnpm run typeorm migration:create",

@@ -8,12 +8,12 @@ import { exec } from 'child_process';
 
 const argv = minimist(process.argv.slice(2));
 
-const option = argv._[0]; // schema:sync,
+const option = argv._[0];
 const dataSource = `./src/typeorm/typeorm.config.ts`;
 
 if (!option) {
   console.log(
-    'Please, choose an option: \n - schema:sync\n - migration:generate\n - migration:create\n - migration:run\n - migration:revert\n - migration:show'
+    `Please, choose an option: migration:generate | migration:create | migration:run | migration:revert | migration:show`
   );
   process.exit(0);
 }
