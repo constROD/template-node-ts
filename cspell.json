@@ -1,7 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["pnpm", "commitlint", "middlewares", "typeorm"],
+  "words": ["pnpm", "commitlint", "middlewares", "typeorm", "WORKDIR"],
   "ignorePaths": [
     "node_modules/",
     "build/",

@@ -17,6 +17,7 @@ dist
 .DS_Store
 .env
 .env.*
+.env-encoded
 .npmrc
 *-lock.json
 *.lock
@@ -26,6 +27,7 @@ dist
 *.njsproj
 *.sln
 *.sw?
+.pnpm-store
 
 # Logs
 logs
