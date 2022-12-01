@@ -4,7 +4,7 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-    "source.organizeImports": false
+    "source.organizeImports": true
   },
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
